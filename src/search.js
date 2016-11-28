@@ -5,36 +5,26 @@ class Search extends React.Component {
 
     constructor(props) {
       super(props)
-      // this.handleClick = this.handleClick.bind(this)
-      this.state = {searchTerm: ""}
+      this.state = {searchTerm: ''}
+      this.handleClick = this.handleClick.bind(this)
+      this.handleChange = this.handleChange.bind(this)
+    }
+
+    handleChange(event) {
+      this.setState({searchTerm: event.target.value})
     }
 
     handleClick(event) {
-      // console.log(event.target.value)
-      // let searchTerm = event.target.value
-      debugger
       event.preventDefault()
-      // debugger
-      fetchVideos(this.state.searchTerm)
-      // debugger
-    }
-
-    handleChange() {
-      // event.preventDefault()
-      // this.setState({searchTerm: event.target.value})
-      this.setState({searchTerm: event.target.value}, function () {
-        console.log(this.state.value);
-      });
-      // this.handleClick(event)
       debugger
-      // console.log(event.target.value)
+      fetchVideos(this.state.searchTerm)
     }
 
     render () {
       return (
-        <form >
-          <input type="text" onChange={this.handleChange.bind(this)}/>
-          <input type="submit" onSubmit={this.handleClick.bind(this)}/>
+        <form onSubmit={this.handleClick}>
+          <input type="text" onChange={this.handleChange}/>
+          <input type="submit"/>
         </form>
       )
     }

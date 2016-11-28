@@ -2,21 +2,23 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 import Search from './search';
+import List from './list';
 import fetchVideos from './actions';
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props)
-    // this.fetchVideos = this.fetchVideos.bind(this)
-  // }
+  constructor(props) {
+    super(props)
+  }
+
   componentWillMount() {
     this.props.dispatch(fetchVideos("pizza"))
   }
+
   render() {
     return (
       <div className="App">
         <Search />
-        <div> {this.fetchVideos}</div>
+        <List />
       </div>
     );
   }
